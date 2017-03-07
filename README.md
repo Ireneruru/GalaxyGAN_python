@@ -6,8 +6,7 @@ This project is the implementation of the Paper "Generative Adversarial Networks
 ##Prerequisites
 - Python with numpy
 - NVIDIA GPU + CUDA 8.0 + CuDNNv5.1
-- TensorFlow 0.12
-- EC2 AMI
+- TensorFlow 1.0
 
 ### Getting Started
 - Clone this repo:
@@ -16,11 +15,12 @@ git clone https://github.com/Ireneruru/GalaxyGAN_python.git
 ```
 
 ##Run our code
+
 ###Preprocess the .FITs
 If the mode equals zero, this is the training data. If the mode equals one, the data is used for testing.
 
 ```bash
-    python roou.py -input XXX -fwhm 1.4 -sigma 1.2 -figure XXX -gpu 1 -model models -mode 0
+    python roou.py --input XXX --fwhm XXX --sig XXX --figure XXX --mode 0
 ```
 XXX is your local address.
 
@@ -34,4 +34,4 @@ Then modify the constants in the Config.py.
 
 ##Acknowledge
 
-This project is the python version of https://github.com/SpaceML/GalaxyGAN. Thanks for his work!
+This project is for the space.ml project.
