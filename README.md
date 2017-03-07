@@ -17,6 +17,8 @@ git clone https://github.com/Ireneruru/GalaxyGAN_python.git
 ##Run our code
 
 ###Preprocess the .FITs
+
+You can find the roou.py in the directory tools. It is used to preprocess the .fits files.
 If the mode equals zero, this is the training data. If the mode equals one, the data is used for testing.
 
 ```bash
@@ -31,6 +33,14 @@ Then modify the constants in the Config.py.
 ```bash
     python train.py
 ```
+
+### Tools
+
+There are still some other codes used as tools, such as plot.py、test.py, visualize.py.
+To highlight, the train.py has tested the data in the test dataset after saving a model.
+If you want to test some other data, you can run the test.py.
+However, remember there are some constants in test.py you need to modify.
+
 
 ##Acknowledge
 
