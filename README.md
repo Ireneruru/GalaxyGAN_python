@@ -1,8 +1,10 @@
 # GalaxyGAN_python
 This project is the implementation of the Paper "Generative Adversarial Networks recover features in astrophysical images
 of galaxies beyond the deconvolution limit" on python.
-And this repo differs from the code on https://github.com/SpaceML/GalaxyGAN_python/ in the training format -
-this repo trains the data as numpy arrays while the other trains .jpg .
+
+This repo differs from the code on https://github.com/SpaceML/GalaxyGAN_python/ in the training format -
+this repo trains the data as numpy arrays while the other trains as .jpg .
+
 ##Setup
 
 ##Prerequisites
@@ -38,10 +40,10 @@ Then modify the constants in the Config.py.
 
 ### Tools
 
-There are still some other codes used as tools, such as plot.py、test.py, visualize.py.
-To highlight, the train.py has tested the data in the test dataset after saving a model.
-If you want to test some other data, you can run the test.py.
-However, remember there are some constants in test.py you need to modify.
+There are still some other codes in tools: plot.py, test.py, visualize.py etc.
+
+To highlight, the train.py has tested the data in the test dataset after saving a model. If you want to test other data, you can run the test.py.
+Remember there are some constants in test.py you need to modify.
 
 
 ##Acknowledge
