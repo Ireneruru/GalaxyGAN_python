@@ -1,4 +1,4 @@
-THIS IS A COPY OF https://github.com/SpaceML/GalaxyGAN_python. 
+THIS IS MY COPY OF https://github.com/SpaceML/GalaxyGAN_python. 
 
 # GalaxyGAN_python
 This project is the implementation of the Paper "Generative Adversarial Networks recover features in astrophysical images
