@@ -1,53 +1,78 @@
-THIS IS MY COPY OF https://github.com/SpaceML/GalaxyGAN_python. 
-
 # GalaxyGAN_python
-This project is the implementation of the Paper "Generative Adversarial Networks recover features in astrophysical images
-of galaxies beyond the deconvolution limit" on python.
+This project is the implementation of the Paper "Generative Adversarial Networks recover features in astrophysical images of galaxies beyond the deconvolution limit" on python. It is the python version of https://github.com/SpaceML/GalaxyGAN. This python version doesn't include deconvolution part of the paper. This repo is very similar to [this]( this repo trains the data as numpy arrays while the other trains as .jpg).  
 
-This repo differs from the code on https://github.com/SpaceML/GalaxyGAN_python/ in the training format -
-this repo trains the data as numpy arrays while the other trains as .jpg .
+## Amazon EC2 Setup
 
-##Setup
+### EC2 Public AMI
+We provide an EC2 AMI with the following pre-installed packages:
 
-##Prerequisites
-- Python with numpy
-- NVIDIA GPU + CUDA 8.0 + CuDNNv5.1
-- TensorFlow 1.0
+* CUDA
+* cuDNN
+* Tensorflow r0.12
+* python
 
-### Getting Started
-- Clone this repo:
+as well as the FITS file we used in the paper(saved in ~/fits_train and ~/fits_test)
+
+AMI Id: ami-96a97f80
+    . (Can be launched using p2.xlarge instance in GPU compute catagory)
+
+ [Launch](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#Images:sort=visibility) an instance.
+### Connect to Amazon EC2 Machine
+
+Please follow the instruction of Amazon EC2.
+
+## Prerequisites
+
+Linux or OSX
+
+NVIDIA GPU + CUDA CuDNN (CPU mode and CUDA without CuDNN may work with minimal modification, but untested)
+
+## Dependencies
+
+We need the following python packages:
+`tensorflow`, `cv2`, `numpy`, `scipy`, `matplotlb`, `pyfits`, and `ipython`
+
+## Get Our Code    
+Clone this repo:
+
 ```bash
-git clone https://github.com/Ireneruru/GalaxyGAN_python.git
+git clone https://github.com/SpaceML/GalaxyGAN_python.git 
+cd  GalaxyGAN_python/
 ```
 
-##Run our code
+## Get Our FITS Files
+The data to download is about 5GB, after unzipping it will become about 16GB. Download this file from Google Drive: https://drive.google.com/open?id=1GCs02NBnr7X3skA04hyuXh6cUMZQLzVe
 
-###Preprocess the .FITs
 
-You can find the roou.py in the directory tools. It is used to preprocess the .fits files.
+## Run Our Code
+
+
+### Preprocess the .FITs
 If the mode equals zero, this is the training data. If the mode equals one, the data is used for testing.
 
 ```bash
-    python roou.py --input XXX --fwhm XXX --sig XXX --figure XXX --mode 0
+python tools/roou.py --input fitsdata/fits_train --fwhm 1.4 --sig 1.2 --mode 0
+python tools/roou.py --input fitsdata/fits_test --fwhm 1.4 --sig 1.2 --mode 1
 ```
-XXX is your local address.
+XXX is your local address. On our AMI, you can skip this step due to all these have default values.
 
-Then modify the constants in the Config.py.
 
-###Train the model
+### Train the model
+
+If you need, you can modify the constants in the Config.py.
 
 ```bash
-    python train.py
+python train.py gpu=1
 ```
+You can appoint which gpu to run the code by changing "gpu=1".
 
-### Tools
+This will start the training process. If you want to load the model which already exists, you can modify the model_path in the config.py.
 
-There are still some other codes in tools: plot.py, test.py, visualize.py etc.
+### Test 
 
-To highlight, the train.py has tested the data in the test dataset after saving a model. If you want to test other data, you can run the test.py.
-Remember there are some constants in test.py you need to modify.
+Before you try to test your model, you should modify the model path in the config.py. 
 
-
-##Acknowledge
-
-This project is for the space.ml project.
+```bash 
+python test.py gpu=1
+```
+The results can be seen in the folder "test".
